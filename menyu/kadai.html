@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教科書リンクまとめ説明付き</title>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 20px;
+    background: #f5f5f5;
+  }
+
+  h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #333;
+  }
+
+  /* 横スライダー */
+  .slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    scroll-snap-type: x mandatory;
+  }
+  .slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ページカード */
+  .card {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 120px;
+    background: #4CAF50;
+    border-radius: 12px;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s, background 0.3s;
+  }
+
+  .card:hover {
+    background: #45a049;
+    transform: scale(1.05);
+  }
+
+  /* 教科まとめ説明 */
+  .summary {
+    margin-top: 10px;
+    padding: 10px;
+    background: #e0f2fe;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #111;
+    max-width: 100%;
+  }
+
+  /* 右上戻るボタン */
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2563eb;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1000;
+    transition: background 0.3s;
+  }
+  .back-btn:hover {
+    background: #1e40af;
+  }
+
+  /* モバイル対応 */
+  @media (max-width: 600px) {
+    .card { width: 160px; height: 100px; font-size: 14px; }
+    .summary { font-size: 14px; padding: 8px; }
+    .back-btn { padding: 8px 12px; font-size: 14px; }
+    .slider { gap: 12px; padding: 10px; }
+  }
+
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .card { width: 180px; height: 110px; font-size: 16px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- 右上に戻るボタン -->
+<a href="index.html" class="back-btn">前のページに戻る</a>
+
+<h2>keyワークの解答</h2>
+<div class="slider" id="kokugo-slider">
+  <a class="card" href="../img/key94,99.jpeg">94〜99 ページ</a>
+  <a class="card" href="../img/key99,105.jpeg">99〜105 ページ</a>
+  <a class="card" href="kokugo-page54.html">国語 54〜55 ページ</a>
+</div>
+<div class="summary">
+  国語の教科書は、漢字・文法・読解問題をバランスよく学習できる構成です。復習ページや練習問題を活用してください。
+</div>
+
+<h2>英語の教科書</h2>
+<div class="slider" id="english-slider">
+  <a class="card" href="english-page80.html">英語 80〜81 ページ</a>
+  <a class="card" href="english-page82.html">英語 82〜83 ページ</a>
+  <a class="card" href="english-page84.html">英語 84〜85 ページ</a>
+</div>
+<div class="summary">
+  英語の教科書は、単語・文法・会話表現・リーディング練習を網羅しています。例文をしっかり確認しながら学習しましょう。
+</div>
+
+</body>
+</html>
