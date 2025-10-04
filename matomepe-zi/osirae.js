@@ -72,7 +72,7 @@ for(let i=0;i<7;i++){
     const breakRow=document.createElement('tr');
     breakRow.innerHTML = `<td>昼休憩</td>
       <td class="hiru"></td><td class="hiru"></td><td class="hiru"></td><td class="hiru"></td><td class="hiru"></td>
-      <td>${BREAK_TIME_LABELS.normal}<br>水木: ${BREAK_TIME_LABELS.wedThu}</td>`;
+      <td>${BREAK_TIME_LABELS.normal}<br>水: ${BREAK_TIME_LABELS.wedThu}</td>`;
     tbody.appendChild(breakRow);
   }
 
