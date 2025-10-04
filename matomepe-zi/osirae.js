@@ -62,7 +62,7 @@ specialRow.innerHTML = `<td></td>
 <td class="reihai">礼拝</td>
 <td class="reihai">礼拝</td>
 <td class="shr">SHR</td>
-<td>月火金: ${TIME_LABELS[0]}<br>水: ${WED_THU_TIME_LABELS[0]}</td>`;
+<td>月火金: ${TIME_LABELS[0]}<br>水木: ${WED_THU_TIME_LABELS[0]}</td>`;
 tbody.appendChild(specialRow);
 
 // 授業行（昼休憩含む）
