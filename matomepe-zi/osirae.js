@@ -72,7 +72,7 @@ for(let i=0;i<7;i++){
     const breakRow=document.createElement('tr');
     breakRow.innerHTML = `<td>昼休憩</td>
       <td class="hiru"></td><td class="hiru"></td><td class="hiru"></td><td class="hiru"></td><td class="hiru"></td>
-      <td>${BREAK_TIME_LABELS.normal}<br>水: ${BREAK_TIME_LABELS.wedThu}</td>`;
+      <td>${BREAK_TIME_LABELS.normal}<br>水木: ${BREAK_TIME_LABELS.wedThu}</td>`;
     tbody.appendChild(breakRow);
   }
 
@@ -102,7 +102,7 @@ for(let i=0;i<7;i++){
     tr.innerHTML += `<td class="${cls}">${subject}</td>`;
   });
   // 時刻（通常・水木用）
-  tr.innerHTML += `<td>${TIME_LABELS[i+1] || ''}<br>水木: ${WED_THU_TIME_LABELS[i+1] || ''}</td>`;
+  tr.innerHTML += `<td>${TIME_LABELS[i+1] || ''}<br>水: ${WED_THU_TIME_LABELS[i+1] || ''}</td>`;
   tbody.appendChild(tr);
 }
 
