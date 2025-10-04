@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>中央リンクと説明（白基調・レスポンシブ）</title>
+  <style>
+    :root{
+      --bg: #f9fafb;      /* 背景色 */
+      --card: #ffffff;    /* カード背景 */
+      --accent: #2563eb;  /* ボタン色 */
+      --text: #111827;    /* メイン文字色 */
+      --muted: #6b7280;   /* 説明文色 */
+    }
+
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wrap{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px;
+    }
+
+    .card{
+      width:100%;
+      max-width:720px;
+      background:var(--card);
+      border-radius:14px;
+      padding:36px;
+      box-shadow:0 6px 24px rgba(0,0,0,0.08);
+      text-align:center;
+    }
+
+    .btn-link{
+      display:inline-block;
+      text-decoration:none;
+      padding:14px 26px;
+      border-radius:8px;
+      font-weight:600;
+      font-size:1.05rem;
+      background:var(--accent);
+      color:#fff;
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow:0 4px 12px rgba(37,99,235,0.3);
+    }
+
+    .btn-link:hover,
+    .btn-link:focus{
+      transform: translateY(-3px);
+      box-shadow:0 8px 20px rgba(37,99,235,0.35);
+      outline:none;
+    }
+
+    .desc{
+      margin-top:18px;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:0.95rem;
+    }
+
+    .foot{
+      margin-top:12px;
+      color:rgba(107,114,128,0.8);
+      font-size:0.85rem;
+    }
+
+    /* iPhone向け（小型スマホ） */
+    @media (max-width:480px){
+      .card{ padding:24px; border-radius:10px; }
+      .btn-link{ padding:12px 20px; font-size:1rem; }
+      .desc{ font-size:0.9rem; }
+      .foot{ font-size:0.8rem; }
+    }
+
+    /* iPad向け（縦・横タブレット） */
+    @media (min-width:481px) and (max-width:1024px){
+      .card{ max-width:640px; padding:28px; border-radius:12px; }
+      .btn-link{ padding:14px 24px; font-size:1.02rem; }
+      .desc{ font-size:0.92rem; }
+      .foot{ font-size:0.82rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="region" aria-labelledby="main-link-title">
+      <!-- 中央リンク -->
+      <a id="main-link-title" class="btn-link" href="../dousisyakurasubennri/matomepe-zi/osirae.html">
+        ここを押してください
+      </a>
+
+      <!-- 説明文 -->
+      <p class="desc">
+        ここのサイトは、1Hのお知らせや時間割、今月のお知らせなどが書かれています。
+      </p>
+
+      <div class="foot"></div>
+    </div>
+  </div>
+</body>
+</html>
