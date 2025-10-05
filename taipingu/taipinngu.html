@@ -33,9 +33,9 @@ button:hover { background-color: #45a049; }
   font-size: 72px;
   font-weight: bold;
   margin-bottom: 10px;
-  transition: transform 0.3s ease;
+  opacity: 1;
+  transform: scale(2);
 }
-.feedback-show { transform: scale(1.2); }
 #answerDisplay { font-size: 24px; color: red; margin-bottom: 10px; }
 #scoreContainer { display: none; text-align:center; }
 .result-item { margin-bottom: 5px; text-align:left; }
@@ -135,7 +135,8 @@ function showNewWord(){
   problemNumber.textContent = `問題 ${currentWordIndex+1} / 20`;
   jpWord.textContent = word.jp;
   inputBoxes.innerHTML = ""; currentLetters=[]; answered=false;
-  feedback.textContent=""; answerDisplay.textContent="";
+  feedback.textContent=""; feedback.style.color="black";
+  answerDisplay.textContent="";
   timeLeft = 30;
   clearInterval(timerInterval);
   timerInterval=setInterval(()=>{
@@ -182,22 +183,24 @@ function checkAnswer(correct=false){
   answered=true;
   clearInterval(timerInterval);
   const word = quizWords[currentWordIndex];
-  feedback.classList.add("feedback-show");
 
-  if(correct){
-    feedback.textContent="○"; feedback.style.color="green";
-    results.push({jp:word.jp, correct:true, answer:word.en, input:word.en});
-  } else {
-    feedback.textContent="×"; feedback.style.color="red";
+  feedback.textContent = correct ? "○" : "×";
+  feedback.style.color = correct ? "green" : "red";
+
+  if(!correct){
     answerDisplay.textContent="正解: "+word.en;
     for(let i=0;i<word.en.length;i++){ inputBoxes.children[i].textContent=word.en[i]; inputBoxes.children[i].style.color="red";}
     results.push({jp:word.jp, correct:false, answer:word.en, input:currentLetters.join("")});
+  } else {
+    results.push({jp:word.jp, correct:true, answer:word.en, input:word.en});
   }
-
-  setTimeout(()=>{ feedback.classList.remove("feedback-show"); },500);
 }
 
-function nextWord(){ currentWordIndex++; showNewWord(); }
+function nextWord(){ 
+  currentWordIndex++; 
+  feedback.textContent=""; // 次の問題ではフィードバックをクリア
+  showNewWord(); 
+}
 
 function endGame(){
   clearInterval(timerInterval);
