@@ -5,6 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>英語タイピング練習</title>
 <style>
+  /* スコア画面のボタン風リンク（濃くはっきり） */
+  .back-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #4CAF50; /* はっきりした緑 */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+  }
+
+  .back-button:hover {
+    background-color: #45a049; /* ホバー時は少し濃く */
+  }
+
+  /* スコアボタンの横並び用 */
+  .score-buttons {
+    display: flex;
+    gap: 10px; /* ボタン間のスペース */
+    margin-top: 15px;
+  }
+</style>
+
+<style>
 body {
   font-family: Arial, sans-serif;
   background: #f0f0f0;
@@ -58,7 +84,6 @@ button:hover { background-color: #45a049; }
 </style>
 </head>
 <body>
-
 <!-- スタート画面 -->
 <div id="startScreen">
   <h1>英語タイピング練習</h1>
@@ -92,16 +117,16 @@ button:hover { background-color: #45a049; }
   <div id="resultList"></div>
   <div class="score-buttons">
     <button onclick="startGame()">もう一度やる</button>
-    <button onclick="goBack()">元のページに戻る</button>
+    <a href="../menyu/taipingu,matome.html" class="back-button">元のページに戻る</a>
   </div>
 </div>
 
 <script>
 const words = [
-{jp:"りんご",en:"apple"},{jp:"バナナ",en:"banana"},{jp:"ぶどう",en:"grape"},{jp:"オレンジ",en:"orange"},{jp:"いちご",en:"strawberry"},{jp:"スイカ",en:"watermelon"},
-{jp:"もも",en:"peach"},{jp:"レモン",en:"lemon"},{jp:"さくらんぼ",en:"cherry"},{jp:"マンゴー",en:"mango"},{jp:"パイナップル",en:"pineapple"},{jp:"ブルーベリー",en:"blueberry"},
-{jp:"キウイ",en:"kiwi"},{jp:"あんず",en:"apricot"},{jp:"すもも",en:"plum"},{jp:"洋ナシ",en:"pear"},{jp:"ラズベリー",en:"raspberry"},{jp:"ココナッツ",en:"coconut"},
-{jp:"パパイヤ",en:"papaya"},{jp:"イチジク",en:"fig"},{jp:"ライム",en:"lime"},{jp:"メロン",en:"melon"},{jp:"ネクタリン",en:"nectarine"},{jp:"ザクロ",en:"pomegranate"},{jp:"グァバ",en:"guava"}
+{jp:"昼食",en:"lunch"},{jp:"博物館",en:"museum"},{jp:"春",en:"spring"},{jp:"安全",en:"safety"},{jp:"くつろぐ",en:"relax"},{jp:"登る",en:"climd"},
+{jp:"お父さん",en:"dad"},{jp:"驚かせる",en:"amaze"},{jp:"森林",en:"forest"},{jp:"氷",en:"ice"},{jp:"橋",en:"bridge"},{jp:"現在では",en:"nowadays"},
+{jp:"果物",en:"fruit"},{jp:"役立つ",en:"helpful"},{jp:"注意深い",en:"careful"},{jp:"テニス",en:"tennis"},{jp:"灰色の",en:"gray"},{jp:"王様",en:"king"},
+{jp:"朝食",en:"breakfast"},{jp:"湖",en:"lake"},{jp:"海外へ",en:"abroad"},{jp:"お母さん",en:"mom"},{jp:"賢い",en:"smart"},{jp:"祭り・祭典",en:"festival"},{jp:"正直な",en:"honest"}
 ];
 
 let quizWords=[], currentWordIndex=0, timeLeft=30, timerInterval, currentLetters=[], answered=false;
