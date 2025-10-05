@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英語タイピング練習</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  margin: 0;
+}
+h1 { margin-bottom: 10px; color: #333; }
+#startScreen, #gameContainer, #scoreContainer { width: 100%; max-width: 600px; text-align: center; }
+#description { margin-bottom: 20px; color: #555; }
+button {
+  padding: 10px 20px; font-size: 18px; cursor: pointer; border: none; border-radius: 5px; background-color: #4CAF50; color: white;
+}
+button:hover { background-color: #45a049; }
+#timerBarContainer {
+  width: 100%; height: 20px; background: #ccc; border-radius: 10px; margin: 20px 0; overflow: hidden;
+}
+#timerBar { height: 100%; width: 100%; background: linear-gradient(to right, #00ff00, #00aa00); transition: width 0.1s linear; }
+#wordContainer { font-size: 24px; margin-bottom: 10px; display:flex; justify-content:space-between; }
+#inputBoxes { display: flex; justify-content: center; gap: 5px; margin-bottom: 10px; }
+.letterBox { width: 30px; height: 40px; border-bottom: 2px solid #333; font-size: 24px; text-align: center; }
+#feedback {
+  font-size: 72px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+.feedback-show { transform: scale(1.2); }
+#answerDisplay { font-size: 24px; color: red; margin-bottom: 10px; }
+#scoreContainer { display: none; text-align:center; }
+.result-item { margin-bottom: 5px; text-align:left; }
+.correct { color: green; }
+.incorrect { color: red; }
+.score-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+@media screen and (max-width: 768px) { 
+  .letterBox { width: 25px; height: 35px; font-size: 20px; } 
+  #feedback { font-size: 56px; } 
+}
+@media screen and (max-width: 480px) { 
+  .letterBox { width: 20px; height: 30px; font-size: 18px; } 
+  #feedback { font-size: 40px; } 
+}
+</style>
+</head>
+<body>
+
+<!-- スタート画面 -->
+<div id="startScreen">
+  <h1>英語タイピング練習</h1>
+  <div id="description">
+    日本語の単語が表示されます。<br>
+    英語の最初の文字はヒントです。<br>
+    Enterキーまたは「次へ」で次の問題に進めます。<br>
+    20問中どれだけ正解できるか挑戦しましょう！
+  </div>
+  <button onclick="startGame()">スタート</button>
+</div>
+
+<!-- ゲーム画面 -->
+<div id="gameContainer" style="display:none;">
+  <div id="timerBarContainer">
+    <div id="timerBar"></div>
+  </div>
+  <div id="wordContainer">
+    <span id="problemNumber"></span>
+    <span id="jpWord"></span>
+  </div>
+  <div id="inputBoxes"></div>
+  <div id="feedback"></div>
+  <div id="answerDisplay"></div>
+  <button onclick="nextWord()">次へ</button>
+</div>
+
+<!-- 結果画面 -->
+<div id="scoreContainer">
+  <h2>スコア: <span id="score"></span></h2>
+  <div id="resultList"></div>
+  <div class="score-buttons">
+    <button onclick="startGame()">もう一度やる</button>
+    <button onclick="goBack()">元のページに戻る</button>
+  </div>
+</div>
+
+<script>
+const words = [
+{jp:"りんご",en:"apple"},{jp:"バナナ",en:"banana"},{jp:"ぶどう",en:"grape"},{jp:"オレンジ",en:"orange"},{jp:"いちご",en:"strawberry"},{jp:"スイカ",en:"watermelon"},
+{jp:"もも",en:"peach"},{jp:"レモン",en:"lemon"},{jp:"さくらんぼ",en:"cherry"},{jp:"マンゴー",en:"mango"},{jp:"パイナップル",en:"pineapple"},{jp:"ブルーベリー",en:"blueberry"},
+{jp:"キウイ",en:"kiwi"},{jp:"あんず",en:"apricot"},{jp:"すもも",en:"plum"},{jp:"洋ナシ",en:"pear"},{jp:"ラズベリー",en:"raspberry"},{jp:"ココナッツ",en:"coconut"},
+{jp:"パパイヤ",en:"papaya"},{jp:"イチジク",en:"fig"},{jp:"ライム",en:"lime"},{jp:"メロン",en:"melon"},{jp:"ネクタリン",en:"nectarine"},{jp:"ザクロ",en:"pomegranate"},{jp:"グァバ",en:"guava"}
+];
+
+let quizWords=[], currentWordIndex=0, timeLeft=30, timerInterval, currentLetters=[], answered=false;
+let results=[];
+
+const startScreen=document.getElementById("startScreen");
+const gameContainer=document.getElementById("gameContainer");
+const jpWord=document.getElementById("jpWord");
+const problemNumber=document.getElementById("problemNumber");
+const inputBoxes=document.getElementById("inputBoxes");
+const timerBar=document.getElementById("timerBar");
+const feedback=document.getElementById("feedback");
+const answerDisplay=document.getElementById("answerDisplay");
+const scoreContainer=document.getElementById("scoreContainer");
+const scoreDisplay=document.getElementById("score");
+const resultList=document.getElementById("resultList");
+
+function startGame(){
+  startScreen.style.display="none";
+  scoreContainer.style.display="none";
+  gameContainer.style.display="block";
+  currentWordIndex=0;
+  results=[];
+  quizWords=shuffleArray(words).slice(0,20);
+  showNewWord();
+}
+
+function showNewWord(){
+  if(currentWordIndex >= quizWords.length){endGame(); return;}
+  const word = quizWords[currentWordIndex];
+  problemNumber.textContent = `問題 ${currentWordIndex+1} / 20`;
+  jpWord.textContent = word.jp;
+  inputBoxes.innerHTML = ""; currentLetters=[]; answered=false;
+  feedback.textContent=""; answerDisplay.textContent="";
+  timeLeft = 30;
+  clearInterval(timerInterval);
+  timerInterval=setInterval(()=>{
+    timeLeft -= 0.1;
+    if(timeLeft<=0){ checkAnswer(false); }
+    timerBar.style.width=(timeLeft/30*100)+"%";
+  },100);
+
+  for(let i=0;i<word.en.length;i++){
+    const box=document.createElement("div"); box.classList.add("letterBox");
+    if(i===0) box.textContent = word.en[0];
+    inputBoxes.appendChild(box);
+    currentLetters.push(i===0?word.en[0]:"");
+  }
+}
+
+document.addEventListener("keydown",(e)=>{
+  if(currentWordIndex >= quizWords.length) return;
+  const word = quizWords[currentWordIndex];
+
+  if(answered){
+    if(e.key==="Enter") nextWord();
+    return;
+  }
+
+  let typed = e.key.toLowerCase();
+  if(/^[a-z]$/.test(typed)){
+    for(let i=1;i<currentLetters.length;i++){
+      if(currentLetters[i]===""){ currentLetters[i]=typed; inputBoxes.children[i].textContent=typed; break;}
+    }
+  } else if(e.key==="Backspace"){
+    for(let i=currentLetters.length-1;i>0;i--){
+      if(currentLetters[i]!==""){ currentLetters[i]=""; inputBoxes.children[i].textContent=""; break;}
+    }
+  } else if(e.key==="Enter"){ checkAnswer(); }
+
+  if(currentLetters.join("").toLowerCase()===word.en.toLowerCase()){
+    checkAnswer(true);
+  }
+});
+
+function checkAnswer(correct=false){
+  if(answered) return;
+  answered=true;
+  clearInterval(timerInterval);
+  const word = quizWords[currentWordIndex];
+  feedback.classList.add("feedback-show");
+
+  if(correct){
+    feedback.textContent="○"; feedback.style.color="green";
+    results.push({jp:word.jp, correct:true, answer:word.en, input:word.en});
+  } else {
+    feedback.textContent="×"; feedback.style.color="red";
+    answerDisplay.textContent="正解: "+word.en;
+    for(let i=0;i<word.en.length;i++){ inputBoxes.children[i].textContent=word.en[i]; inputBoxes.children[i].style.color="red";}
+    results.push({jp:word.jp, correct:false, answer:word.en, input:currentLetters.join("")});
+  }
+
+  setTimeout(()=>{ feedback.classList.remove("feedback-show"); },500);
+}
+
+function nextWord(){ currentWordIndex++; showNewWord(); }
+
+function endGame(){
+  clearInterval(timerInterval);
+  gameContainer.style.display="none";
+  scoreContainer.style.display="block";
+  scoreDisplay.textContent = results.filter(r=>r.correct).length + " / 20";
+  resultList.innerHTML="";
+  results.forEach((r,i)=>{
+    const div=document.createElement("div"); div.classList.add("result-item");
+    const symbol = r.correct?"○":"×";
+    div.innerHTML = `問題 ${i+1}: ${r.jp} → ${symbol} <span class="${r.correct?'correct':'incorrect'}">あなた: ${r.input} / 正解: ${r.answer}</span>`;
+    resultList.appendChild(div);
+  });
+}
+
+function goBack(){ window.history.back(); }
+
+function shuffleArray(array){ 
+  let arr=array.slice(); 
+  for(let i=arr.length-1;i>0;i--){ 
+    const j=Math.floor(Math.random()*(i+1)); 
+    [arr[i],arr[j]]=[arr[j],arr[i]]; 
+  } 
+  return arr;
+}
+</script>
+
+</body>
+</html>
