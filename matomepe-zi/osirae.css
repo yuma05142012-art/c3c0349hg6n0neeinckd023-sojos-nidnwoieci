@@ -249,3 +249,61 @@ table th, table td {
   left: 10px;
   z-index: 1000;
 }
+
+/* メニューと右上ボタンの共通設定 */
+.fixed-menu {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+/* 通常のメニューボタン */
+.menu-container button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu-container button:hover {
+  background-color: #45a049;
+}
+
+/* 右上の追加ボタン */
+.extra-button {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.extra-button:hover {
+  background-color: #1976D2;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+  .fixed-menu {
+    top: 8px;
+    right: 8px;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .menu-container button,
+  .extra-button {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+}
