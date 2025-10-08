@@ -213,3 +213,39 @@ table th, table td {
     font-size: 15px;
   }
 }
+
+/* ===== メニュー（button）をかっこよくする ===== */
+#menuBtn {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ホバー時（マウスを乗せたとき） */
+#menuBtn:hover {
+  background: linear-gradient(135deg, #6366f1, #60a5fa);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+/* 押したとき（クリック時） */
+#menuBtn:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* 固定メニューコンテナの位置（必要なら調整） */
+.fixed-menu {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
