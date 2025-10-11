@@ -132,3 +132,35 @@ document.addEventListener('click', (e) => {
     menuOpen = false;
   }
 });
+
+// ==============================
+// 右上「その他」メニュー専用スクリプト
+// ==============================
+document.addEventListener('DOMContentLoaded', () => {
+  const otherMenuBtn = document.getElementById('otherMenuBtn');
+  const otherMenuOptions = document.getElementById('otherMenuOptions');
+  let otherMenuOpen = false;
+
+  // ボタンをクリックしたときの表示切替
+  otherMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    otherMenuOpen = !otherMenuOpen;
+    if (otherMenuOpen) {
+      otherMenuOptions.classList.add('show');
+    } else {
+      otherMenuOptions.classList.remove('show');
+    }
+  });
+
+  // メニュー外をクリックしたら閉じる
+  document.addEventListener('click', (e) => {
+    if (
+      otherMenuOpen &&
+      !otherMenuBtn.contains(e.target) &&
+      !otherMenuOptions.contains(e.target)
+    ) {
+      otherMenuOptions.classList.remove('show');
+      otherMenuOpen = false;
+    }
+  });
+});

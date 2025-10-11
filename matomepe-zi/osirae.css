@@ -253,3 +253,92 @@ table th, table td {
   z-index: 1000;
 }
 
+/* ==========================
+   右上「その他」メニュー専用
+   ========================== */
+.other-menu-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+/* ボタンデザイン */
+#otherMenuBtn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#otherMenuBtn:hover {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+#otherMenuBtn:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* スライド表示部分 */
+.other-menu-options {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  overflow: hidden;
+  min-width: 180px;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease, transform 0.3s ease;
+}
+
+.other-menu-options a {
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  border-bottom: 1px solid #e5e7eb;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.other-menu-options a:last-child {
+  border-bottom: none;
+}
+
+/* 表示時アニメーション */
+.other-menu-options.show {
+  opacity: 1;
+  max-height: 500px;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.other-menu-options.show a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.other-menu-options.show a:nth-child(1){ transition-delay: 0.1s; }
+.other-menu-options.show a:nth-child(2){ transition-delay: 0.15s; }
+.other-menu-options.show a:nth-child(3){ transition-delay: 0.2s; }
+.other-menu-options.show a:nth-child(4){ transition-delay: 0.25s; }
+
