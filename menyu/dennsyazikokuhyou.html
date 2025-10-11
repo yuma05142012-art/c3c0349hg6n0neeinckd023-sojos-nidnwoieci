@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>国際会館発 直通電車 時刻表（奈良方面）</title>
+<style>
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom right, #e9fbe9, #ffffff);
+  color: #333;
+  text-align: center;
+}
+
+/* 🔙 戻るボタン */
+.back-button {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 100, 0, 0.6);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  backdrop-filter: blur(6px);
+}
+.back-button:hover {
+  background: rgba(0, 150, 0, 0.8);
+}
+
+/* タイトル */
+header {
+  padding: 80px 20px 20px;
+}
+header h1 {
+  color: #006400;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+.time-display {
+  font-size: 1em;
+  color: #444;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* 時刻表 */
+.train-section {
+  margin: 0 auto 40px;
+  padding: 20px;
+  max-width: 90%;
+  background: #f8fdf8;
+  border-radius: 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+.train-section h2 {
+  color: #006400;
+  border-left: 5px solid #7ad97a;
+  padding-left: 10px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.train-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1em;
+}
+.train-table th, .train-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+.train-table th {
+  background: linear-gradient(90deg, #9ae89a, #7ad97a);
+  color: #fff;
+}
+.train-table tr:nth-child(even) {
+  background-color: #f3fdf3;
+}
+
+/* 注意書き */
+.train-note {
+  text-align: center;
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* 📱 スマホ対応 */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.4em; }
+  .train-table th, .train-table td {
+    font-size: 0.8em;
+    padding: 6px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- 🔙 戻るボタン -->
+<a href="../index.html" class="back-button">← 戻る</a>
+
+<header>
+  <h1>🚇 国際会館発 奈良方面 新田辺 直通電車 時刻表</h1>
+  <h3>※6時間目が終わってからの時間です・平日です※</h3>
+  <p id="nowTime" class="time-display"></p>
+</header>
+
+<!-- 🚄 急行 -->
+<section class="train-section">
+  <h2>急行（奈良行き）</h2>
+  <table class="train-table">
+    <thead>
+      <tr>
+        <th>発車時刻</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>15:44</td><td>奈良行き 急行</td></tr>
+      <tr><td>16:19</td><td>奈良行き 急行</td></tr>
+      <tr><td>16:49</td><td>奈良行き 急行</td></tr>
+      <tr><td>17:19</td><td>奈良行き 急行</td></tr>
+      <tr><td>17:49</td><td>奈良行き 急行</td></tr>
+      <tr><td>18:19</td><td>奈良行き 急行</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 🚃 普通 -->
+<section class="train-section">
+  <h2>普通（新田辺行き 直通）</h2>
+  <table class="train-table">
+    <thead>
+      <tr>
+        <th>発車時刻</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>16:08</td><td>新田辺行き 普通</td></tr>
+      <tr><td>16:39</td><td>新田辺行き 普通</td></tr>
+      <tr><td>17:09</td><td>新田辺行き 普通</td></tr>
+      <tr><td>17:39</td><td>新田辺行き 普通</td></tr>
+      <tr><td>18:09</td><td>新田辺行き 普通</td></tr>
+      <tr><td>18:24</td><td>新田辺行き 普通</td></tr>
+    </tbody>
+  </table>
+  <p class="train-note">※ 時刻は例です。実際の運行時刻は鉄道会社公式サイトをご確認ください。</p>
+</section>
+
+<script>
+// 現在時刻と曜日を表示
+function updateCurrentTime() {
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+  const days = ['日', '月', '火', '水', '木', '金', '土'];
+  const day = days[now.getDay()];
+  document.getElementById("nowTime").textContent = `現在時刻：${timeStr}　(${day}曜日)`;
+}
+setInterval(updateCurrentTime, 1000);
+updateCurrentTime();
+</script>
+
+</body>
+</html>
