@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>まとめページ - おすすめガイド</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* 上の黒い帯の部分（タイトル） */
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+    }
+
+    /* メイン部分の配置（カードを中央に並べる） */
+    main {
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* 各カード（スマホ、iPad、MacBook） */
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+      transition: transform 0.2s;
+      overflow: hidden;
+    }
+
+    /* ホバーしたときに少し大きくなるアニメーション */
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    /* カード全体をリンク化するためのaタグ設定 */
+    .card a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+    }
+
+    /* カード内の画像（クリックできる） */
+    .card img {
+      width: 100%;
+      height: auto;
+      transition: opacity 0.3s;
+    }
+
+    /* 画像にカーソルを合わせたときに少し透明に */
+    .card img:hover {
+      opacity: 0.8;
+    }
+
+    /* 画像下のタイトル文字部分 */
+    .card p {
+      font-weight: bold;
+      padding: 10px 0;
+      margin: 0;
+    }
+
+    /* 下の戻るボタンエリア */
+    footer {
+      padding: 20px;
+      text-align: center; /* ボタンを中央寄せにする */
+    }
+
+    /* 戻るボタンのデザイン */
+    .back-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .back-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>おすすめガイドまとめページ</h1>
+  <p>スマホ・iPad・MacBook、用途に合わせて選ぼう！</p>
+</header>
+
+<main>
+  <!-- スマホページリンク -->
+  <div class="card">
+    <a href="../dennsikiki/sumaho.html">
+      <img src="https://www.apple.com/v/iphone-17/a/images/meta/iphone-17_specs__baxuovjp6n6a_og.png" alt="スマホおすすめ">
+      <p>📱 スマホおすすめ一覧</p>
+    </a>
+  </div>
+
+  <!-- iPadページリンク -->
+  <div class="card">
+    <a href="../dennsikiki/tabureto.html">
+      <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-model-unselect-gallery-1-202503_FMT_WHH?wid=2560&hei=1440&fmt=p-jpg&qlt=80" alt="iPadおすすめ">
+      <p>💻 iPadおすすめ一覧</p>
+    </a>
+  </div>
+
+  <!-- MacBookページリンク -->
+  <div class="card">
+    <a href="../dennsikiki/pasokon.html">
+      <img src="https://www.ntt.com/content/dam/nttcom/hq/jp/business/mobile/product/mac/air/img/macbook_air_15-in_m4.png" alt="MacBookおすすめ">
+      <p>🖥️ MacBookおすすめ一覧</p>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <a href="../matomepe-zi/osirae.html" class="back-btn">戻る</a>
+</footer>
+
+</body>
+</html>
