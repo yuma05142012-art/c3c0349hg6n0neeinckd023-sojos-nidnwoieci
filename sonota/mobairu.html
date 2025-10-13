@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>モバイルバッテリー貸出ページ</title>
+<style>
+body {
+  font-family: "Hiragino Kaku Gothic ProN","游ゴシック",sans-serif;
+  margin:0;
+  padding:0;
+  background: linear-gradient(135deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb);
+  background-size: 300% 300%;
+  animation: bgmove 10s infinite alternate;
+  color: #333;
+}
+
+@keyframes bgmove {
+  0% { background-position: left top; }
+  100% { background-position: right bottom; }
+}
+
+header {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.85);
+  border-bottom: 2px solid #eee;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* カード */
+.battery-card {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.9);
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+/* 番号 */
+.battery-number {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
+/* 画像ラッパー */
+.img-wrapper {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.img-wrapper img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px 0 0 16px;
+  display: block;
+}
+
+/* 文字部分 */
+.battery-info {
+  flex: 1;
+  padding: 15px;
+}
+
+.battery-info h2 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.battery-info p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* 戻るボタン */
+.return {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.return a {
+  background: #fff;
+  color: #0078ff;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: bold;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+}
+
+.return a:hover {
+  background: #0078ff;
+  color: white;
+}
+
+/* 5個目のみ全体オーバーレイ */
+.unavailable-card {
+  position: relative;
+}
+
+.unavailable-card .overlay-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.6);
+  color: #d00000;
+  font-weight: bold;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+  border-radius: 16px;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .battery-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .img-wrapper, .img-wrapper img {
+    width: 100px;
+    height: 100px;
+    border-radius: 16px 16px 0 0;
+  }
+  .battery-info {
+    text-align: center;
+  }
+  .battery-number {
+    margin-left: 0;
+    margin-bottom: 5px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🔋 モバイルバッテリー貸出ページ</h1>
+  <p>ただいま貸し出しできるモバイルバッテリーの一覧です。もし使いたい場合がありましたら、いつでもお気軽にお声掛けください。ライトニングケーブルもありますので、iPhoneなどの充電もできるように対応しております</p>
+  <p>場合によってはその日の持ってきていないモバイルバッテリーもありますのであらかじめご了承ください。</p>
+</header>
+
+<div class="container">
+
+  <div class="battery-card">
+    <div class="battery-number">1</div>
+    <div class="img-wrapper">
+      <img src="https://www.ankerjapan.com/cdn/shop/files/A1695N41.jpg?v=1746573984&width=1200" alt="モバイルバッテリー1">
+    </div>
+    <div class="battery-info">
+      <h2>アンカー巻取り式モバイルバッテリー25000mAh</h2>
+      <p>巻取り式ケーブル内蔵のモバイルバッテリー。パソコンも充電電できるほどの高出力が出ます。なを、このモバイルバッテリーは、ほぼ毎日持っているためいつでも貸し出すことができます。</p>
+    </div>
+  </div>
+
+  <div class="battery-card">
+    <div class="battery-number">2</div>
+    <div class="img-wrapper">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtUfpVwnLcn-ClnTw_NK6YS-TFj6fzZpXcsw&s" alt="モバイルバッテリー2">
+    </div>
+    <div class="battery-info">
+      <h2>iWALK巻取り式モバイルバッテリー20000mHa</h2>
+      <p>巻取り式ケーブル内蔵のモバイルバッテリー。パソコンも充電電できるほどの高出力が出ます。このモバイルバッテリーは主に学校においており、貸出が多くなった時に予備としておいています。</p>
+    </div>
+  </div>
+
+  <div class="battery-card">
+    <div class="battery-number">3</div>
+    <div class="img-wrapper">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXQvJyfaWcmlf8qPE0ezYchcqDk_q8awbch3rlQGKKVMLkeR5Mx36XgIClMYbOAn0fL3U&usqp=CAU" alt="モバイルバッテリー3">
+    </div>
+    <div class="battery-info">
+      <h2>ユーグリーン巻取り式モバイルバッテリー20000mAh</h2>
+      <p>巻取り式ケーブル内蔵の、モバイルバッテリーです。パソコンなども充電できる高出力が出ます。主に毎日持ってくるモバイルバッテリーなため、基本貸し出しが少ない場合、１番のモバイルバッテリーとこのモバイルバッテリーしか貸し出ししかしておりません。</p>
+    </div>
+  </div>
+
+  <div class="battery-card">
+    <div class="battery-number">4</div>
+    <div class="img-wrapper">
+      <img src="https://image.yodobashi.com/product/100/000/001/009/354/683/100000001009354683_10203.jpg" alt="モバイルバッテリー4">
+    </div>
+    <div class="battery-info">
+      <h2>ユーグリーンケーブル内蔵付きモバイルバッテリー20000mAh</h2>
+      <p>主に、この四つの中では一番軽いモバイルバッテリーです。ですが、僕が使ってみたかんじ他のモバイルバッテリーはタブレット2.5回分充電できますが、このモバイルバッテリーは2回位分ギリ充電できるか？くらいです。主に予備機なため基本は学校においております。</p>
+    </div>
+  </div>
+
+  <!-- 5個目：貸出不可 -->
+  <div class="battery-card unavailable-card">
+    <div class="battery-number">5</div>
+    <div class="img-wrapper">
+      <img src="https://www.ankerjapan.com/cdn/shop/files/A1384001_baf9eafa-ee93-4d60-b55a-291816da656a.jpg?crop=center&height=525&v=1717651432&width=525" alt="モバイルバッテリー5">
+    </div>
+    <div class="battery-info">
+      <h2>アンカーケーブルストラップ付きモバイルバッテリー20000mAh</h2>
+      <p>一番最初の主力機として活躍しておりましたが、１番のモバイル登場後準主力機となっておりました。ですが、３番のモバイルバッテリーが新しく届いたため、１０月の上旬をもちまして、主力から離れて、予備機になっておりましたが、他のモバイルバッテリより、出力がやや低く、タブレット充電が精一杯だったため、十月のなかばを</p>
+    </div>
+    <div class="overlay-text">ただいまお貸ししておりません</div>
+  </div>
+
+</div>
+
+<div class="return">
+  <a href="../matomepe-zi/osirae.html">← 元のページに戻る</a>
+</div>
+
+</body>
+</html>
