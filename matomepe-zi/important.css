@@ -1,0 +1,57 @@
+/* ================================
+   重要なお知らせボックス専用スタイル
+   ================================ */
+.important-announcement {
+  background: linear-gradient(135deg, #fde68a, #fbbf24);
+  border: 2px solid #facc15;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 80px 0 20px 0;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+  color: #333;
+  animation: fadeIn 0.8s ease;
+}
+
+.important-announcement h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #92400e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.important-announcement ul {
+  list-style: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+.important-announcement li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.important-announcement li:last-child {
+  border-bottom: none;
+}
+
+/* フェードインアニメーション */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+  .important-announcement {
+    padding: 16px;
+    font-size: 0.95rem;
+  }
+  .important-announcement h2 {
+    font-size: 1.2rem;
+  }
+}
