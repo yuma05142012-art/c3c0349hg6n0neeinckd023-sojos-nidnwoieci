@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プログラミング塾紹介</title>
+<style>
+  /* 全体背景とフォント */
+  body {
+    font-family: "Noto Sans JP", sans-serif;
+    background: #f0f8f5;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* 右上固定の戻るボタン */
+  .back-button {
+    position: fixed;       /* 固定 */
+    top: 20px;             /* 上から20px */
+    right: 20px;           /* 右から20px */
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2f7a45;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    z-index: 100;          /* 他の要素より前に表示 */
+  }
+
+  .back-button:hover {
+    background-color: #1f5930;
+  }
+
+  /* カード */
+  .card {
+    background: #e6f4ea;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    width: 700px;          /* カード幅固定 */
+    max-width: 90%;        /* 小さい画面で縮小 */
+    padding: 20px;
+    text-align: center;
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    margin-top: 60px;      /* 固定ボタンと重ならないように余白 */
+  }
+
+  /* 画像 */
+  .card img {
+    width: 100%;           /* カード幅いっぱい */
+    max-height: 350px;     /* 高さ最大350px */
+    object-fit: cover;     /* 縦横比を維持してトリミング */
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+
+  /* タイトル */
+  .card h1 {
+    color: #2f7a45;
+    margin-bottom: 15px;
+    font-size: 28px;
+  }
+
+  /* 説明文 */
+  .card p {
+    color: #3a3a3a;
+    line-height: 1.6;
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+
+  /* URLボタン */
+  .card a {
+    display: inline-block;
+    width: 220px;           /* ボタン幅固定 */
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2f7a45;
+    padding: 12px 0;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-align: center;
+  }
+
+  .card a:hover {
+    background-color: #1f5930;
+  }
+
+  /* フェードインアニメーション */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- 右上固定の戻るボタン -->
+  <a href="../matomepe-zi/osirae.html" class="back-button">← 戻る</a>
+
+  <!-- プログラミング塾カード -->
+  <div class="card">
+    
+
+    <h1>BeEngneer</h1>
+    <img src="https://d33whrdjw5ofau.cloudfront.net/media/2024-04-18.jpg" alt="プログラミング塾">
+    <p>
+        このサイトを作るのに（このサイトの管理者である私が）プログラミングを習いました、そこで、少しその説明をさせていただきます。BeEngneerは、中高生向けのプログラミング教室で、未経験から1年後にLINEのようなチャットアプリが作れるようになります。教えてくれる講師は大学生ながらエンジニアとして活動しているメンバーで、親しみやすさをもちながら本格的なプログラミングを学ぶことができます。<br>
+        京大本校は出町柳駅の近くにあり、通学路の途中にある人が多いので、通いやすい場所にあります。<br>
+        授業は週に1回2時間で、部活などと並行して取り組みやすいのも魅力です。
+    </p>
+
+    <a href="https://be-engineer.tech/" target="_blank">公式サイトを見る</a>
+  </div>
+
+</body>
+</html>
