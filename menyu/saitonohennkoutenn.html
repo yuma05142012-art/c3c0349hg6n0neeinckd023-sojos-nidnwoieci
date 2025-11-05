@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サイト更新のお知らせ</title>
+<style>
+  :root {
+    --blue: #2563eb;
+    --red: #ef4444;
+    --yellow: #facc15;
+  }
+
+  body {
+    font-family: "Noto Sans JP", sans-serif;
+    margin: 0;
+    background: #fff;
+    color: #111;
+    padding: 0 20px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* ==== 背景の絵の具っぽい模様 ==== */
+  .bg-paint {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+  }
+  .paint-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.25;
+    mix-blend-mode: multiply;
+  }
+  .blob-blue { background: var(--blue); top: -80px; left: -60px; width: 300px; height: 300px; }
+  .blob-red { background: var(--red); bottom: -60px; right: -40px; width: 260px; height: 260px; }
+  .blob-yellow { background: var(--yellow); top: 40%; left: 50%; transform: translate(-50%, -50%); width: 280px; height: 280px; }
+
+  /* ==== 戻るボタン ==== */
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 16px;
+    font-size: 15px;
+    border-radius: 10px;
+    background: linear-gradient(to right, var(--blue), var(--red), var(--yellow));
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+  }
+
+  header {
+    text-align: center;
+    padding: 60px 0 20px;
+  }
+
+  header h1 {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 800;
+    background: linear-gradient(to right, var(--blue), var(--red), var(--yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+
+  .notice {
+    padding: 30px 20px;
+    border-left: 6px solid var(--blue);
+    border-image: linear-gradient(to bottom, var(--blue), var(--red), var(--yellow)) 1;
+  }
+
+  .notice h2 {
+    font-size: clamp(20px, 4vw, 28px);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .notice p {
+    line-height: 1.8;
+    font-size: clamp(15px, 3.5vw, 17px);
+    margin: 0;
+  }
+
+  .date {
+    margin-top: 14px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 10px 40px;
+    font-size: 13px;
+    color: #9ca3af;
+  }
+
+  /* スマホ対応 */
+  @media (max-width: 600px) {
+    .container {
+      border-radius: 0;
+      box-shadow: none;
+      margin-bottom: 40px;
+    }
+    .notice {
+      border-left: none;
+      border-top: 6px solid var(--blue);
+    }
+    .back-btn {
+      top: 14px;
+      left: 14px;
+      font-size: 14px;
+      padding: 8px 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- 絵の具っぽい背景 -->
+  <div class="bg-paint">
+    <div class="paint-blob blob-blue"></div>
+    <div class="paint-blob blob-red"></div>
+    <div class="paint-blob blob-yellow"></div>
+  </div>
+
+  <!-- 戻るボタン -->
+  <a href="../matomepe-zi/osirae.html" class="back-btn">← 戻る</a>
+
+  <header>
+    <h1>お知らせ</h1>
+  </header>
+
+  <main class="container">
+    <section class="notice">
+      <h2>デザインを一新しました。</h2>
+      <p>
+        最初の画面の部分の背景、および全体的に、緑を基調としたデザインに統一させてもらいました。<br>
+        もし見にくいから変えて欲しいなどの要望などがありましたら、ご連絡ください。<br>
+      </p>
+      <div class="date">更新日：2025年11月5日</div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 学校サイト管理者
+  </footer>
+
+</body>
+</html>
