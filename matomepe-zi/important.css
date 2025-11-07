@@ -48,10 +48,11 @@
 /* スマホ対応 */
 @media (max-width: 600px) {
   .important-announcement {
-    padding: 18px;
-    font-size: 0.95rem;
+    padding: 16px;
+    font-size: 0.9rem;
+    margin: 60px 10px 20px 10px;
   }
   .important-announcement h2 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 }
