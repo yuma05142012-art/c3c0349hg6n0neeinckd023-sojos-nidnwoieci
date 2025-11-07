@@ -7,18 +7,20 @@ body {
   background: #f0f8f5;
   color: #333;
   padding: 20px;
+  -webkit-text-size-adjust: 100%;
 }
 
 h1 {
   color: #2f7a45;
   margin-bottom: 20px;
   text-align: center;
+  word-break: keep-all;
 }
 
 /* ==========================
    イベント・カード
    ========================== */
-.eventsWrapper { overflow-x:auto; padding-bottom:12px; }
+.eventsWrapper { overflow-x:auto; padding-bottom:12px; -webkit-overflow-scrolling: touch; }
 .events { display:flex; gap:16px; }
 .card {
   flex:0 0 240px; 
@@ -43,26 +45,29 @@ h1 {
   margin-top: 40px;
   width: 100%;
   box-sizing: border-box;
-  -webkit-overflow-scrolling: touch; /* iPhone慣性スクロール */
+  -webkit-overflow-scrolling: touch;
 }
 
 table {
   width: 100%;
-  min-width: 650px;
+  min-width: 680px;
   border-collapse: collapse;
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
   box-sizing: border-box;
+  table-layout: fixed;
 }
 
 th, td {
   border: 1px solid #d1e7dd;
-  padding: 12px 8px;
+  padding: 12px 6px;
   text-align: center;
   font-size: 0.95rem;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 th {
@@ -237,13 +242,6 @@ tbody tr:nth-child(even) {
     overflow-x: hidden;
   }
 
-  .timetable-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
   table {
     width: 100%;
     border-collapse: collapse;
@@ -256,6 +254,7 @@ tbody tr:nth-child(even) {
     font-size: 11.5px;
     padding: 6px 3px;
     word-break: keep-all;
+    text-overflow: ellipsis;
   }
 
   /* 列幅をスマホ向けに最適化 */
@@ -266,7 +265,8 @@ tbody tr:nth-child(even) {
 
   table th:last-child,
   table td:last-child {
-    width: 28%; /* 時刻列広め */
+    width: 26%; /* 時刻列少し広めで見切れ防止 */
+    white-space: normal;
   }
 
   table th:not(:first-child):not(:last-child),
@@ -285,13 +285,51 @@ tbody tr:nth-child(even) {
       padding: 8px 4px;
       word-break: keep-all;
     }
+    table {
+      transform: translateX(0);
+      width: 100vw;
+    }
   }
 }
 
 /* ==========================
-   Safariでの右端切れ防止（全体共通）
+   Safariでの右端切れ防止
    ========================== */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+}
+
+/* ==========================
+   時間割セルの文字切れ防止
+   ========================== */
+th, td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* スマホでは少し縮小してでも収める */
+@media (max-width: 600px) {
+  th, td {
+    white-space: normal; /* 折り返し許可 */
+    word-break: keep-all;
+    font-size: clamp(10px, 2.8vw, 12px); /* 画面に合わせて文字を自動縮小 */
+    padding: 6px 2px;
+  }
+
+  table {
+    table-layout: auto; /* 固定幅ではなく内容に合わせる */
+  }
+
+  /* 時間列と時刻列は少し広め */
+  table th:first-child,
+  table td:first-child {
+    width: 14%;
+  }
+
+  table th:last-child,
+  table td:last-child {
+    width: 26%;
+  }
 }
