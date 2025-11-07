@@ -321,3 +321,32 @@ tbody tr:nth-child(even) {
     overflow-x: hidden;
   }
 }
+
+/* ==========================
+   Safari表示補正（右端切れ防止）
+   ========================== */
+.timetable-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* iPhoneでの慣性スクロール */
+  width: 100%;
+}
+
+table {
+  max-width: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden; /* 横スクロール禁止でズレ防止 */
+}
+
+/* Safariでpaddingが反映ズレしにくいよう微調整 */
+@supports (-webkit-touch-callout: none) {
+  th, td {
+    padding: 10px 6px;
+    word-break: keep-all;
+  }
+}
