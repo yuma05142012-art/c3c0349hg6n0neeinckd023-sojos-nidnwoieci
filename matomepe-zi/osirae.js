@@ -1,4 +1,4 @@
-// script.js - 時間割完全版
+// script.js - 時間割完全版（左右メニュー上から順スライド対応）
 
 // お知らせカード
 const EVENTS = [
@@ -52,41 +52,53 @@ const bulletinBoard = document.getElementById('bulletin-board');
 const menuBtn = document.getElementById('menuBtn');
 const menuOptions = document.getElementById('menuOptions');
 
+// ======================
 // お知らせカード生成
-EVENTS.forEach(ev=>{
-  const card=document.createElement('div');
-  card.className='card';
-  card.innerHTML=`<div class="date">${ev.day}日</div>
-    <div class="content"><h3>${ev.title}</h3><p>${ev.desc}</p>${ev.tags.map(t=>`<span class="tag">${t}</span>`).join(' ')}</div>`;
+// ======================
+EVENTS.forEach(ev => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="date">${ev.day}日</div>
+    <div class="content">
+      <h3>${ev.title}</h3>
+      <p>${ev.desc}</p>
+      ${ev.tags.map(t=>`<span class="tag">${t}</span>`).join(' ')}
+    </div>`;
   eventsEl.appendChild(card);
 });
 
+// ======================
+// 時間割生成
+// ======================
+
 // SHR/礼拝行
 const specialRow = document.createElement('tr');
-specialRow.innerHTML = `<td></td>
-<td class="shr">SHR</td>
-<td class="shr">SHR</td>
-<td class="reihai">礼拝</td>
-<td class="reihai">礼拝</td>
-<td class="shr">SHR</td>
-<td>月火金: ${TIME_LABELS[0]}<br>水木: ${WED_THU_TIME_LABELS[0]}</td>`;
+specialRow.innerHTML = `
+  <td></td>
+  <td class="shr">SHR</td>
+  <td class="shr">SHR</td>
+  <td class="reihai">礼拝</td>
+  <td class="reihai">礼拝</td>
+  <td class="shr">SHR</td>
+  <td>月火金: ${TIME_LABELS[0]}<br>水木: ${WED_THU_TIME_LABELS[0]}</td>`;
 tbody.appendChild(specialRow);
 
-// 授業行（昼休憩含む）
-for(let i=0;i<7;i++){
-  // 4時間目と5時間目の間に昼休憩
-  if(i==4){
-    const breakRow=document.createElement('tr');
-    breakRow.innerHTML = `<td>昼休憩</td>
+// 授業行
+for (let i=0; i<7; i++) {
+  if (i===4) { // 昼休憩
+    const breakRow = document.createElement('tr');
+    breakRow.innerHTML = `
+      <td>昼休憩</td>
       <td class="hiru"></td><td class="hiru"></td><td class="hiru"></td><td class="hiru"></td><td class="hiru"></td>
       <td>${BREAK_TIME_LABELS.normal}<br>水: ${BREAK_TIME_LABELS.wedThu}</td>`;
     tbody.appendChild(breakRow);
   }
 
-  const tr=document.createElement('tr');
+  const tr = document.createElement('tr');
   tr.innerHTML = `<td>${i+1}時間目</td>`;
-  TIMETABLE[i].forEach(subject=>{
-    let cls='';
+  TIMETABLE[i].forEach(subject => {
+    let cls = '';
     if(subject.includes('国語1')) cls='kokugo1';
     else if(subject.includes('国語2')) cls='kokugo2';
     else if(subject.includes('数学1')) cls='sugaku1';
@@ -108,66 +120,83 @@ for(let i=0;i<7;i++){
     else if(subject.includes('家庭')) cls='kateika';
     tr.innerHTML += `<td class="${cls}">${subject}</td>`;
   });
-  // 時刻（通常・水木用）
   tr.innerHTML += `<td>${TIME_LABELS[i+1] || ''}<br>水: ${WED_THU_TIME_LABELS[i+1] || ''}</td>`;
   tbody.appendChild(tr);
 }
 
-// 掲示板（1つにまとめる）
+// ======================
+// 掲示板
+// ======================
 const BULLETIN_ITEMS = [
   {title:'11月号', desc:'今まだ届いておりません。', tags:['山野先生からの言葉']},
 ];
-bulletinBoard.innerHTML = `<h3>保護者の方に向けて（学級通信）</h3><ul>
-${BULLETIN_ITEMS.map(item => `<li><span>${item.title}: ${item.desc}</span> ${item.tags.map(tag=>`<span class="tag">${tag}</span>`).join(' ')}</li>`).join('')}
+bulletinBoard.innerHTML = `<h3>保護者の方に向けて（学級通信）</h3>
+<ul>
+${BULLETIN_ITEMS.map(item => `<li>
+  <span>${item.title}: ${item.desc}</span>
+  ${item.tags.map(tag=>`<span class="tag">${tag}</span>`).join(' ')}
+</li>`).join('')}
 </ul>`;
 
-// メニューアニメーション
+// ======================
+// 左メニュー（順スライド可変）
+// ======================
 let menuOpen = false;
 menuBtn.addEventListener('click', () => {
   menuOpen = !menuOpen;
+  const links = menuOptions.querySelectorAll('a');
   if(menuOpen){
     menuOptions.classList.add('show');
+    links.forEach((link,i)=>{
+      link.style.animation = 'slideDownFade 0.4s forwards';
+      link.style.animationDelay = `${i*0.1}s`;
+    });
   } else {
     menuOptions.classList.remove('show');
+    links.forEach(link => link.style.animation = '');
   }
 });
 
-// メニュー外クリックで閉じる
+// 外クリックで閉じる
 document.addEventListener('click', (e) => {
   if (!menuBtn.contains(e.target) && !menuOptions.contains(e.target) && menuOpen) {
     menuOptions.classList.remove('show');
     menuOpen = false;
+    menuOptions.querySelectorAll('a').forEach(link => link.style.animation='');
   }
 });
 
-// ==============================
-// 右上「その他」メニュー専用スクリプト
-// ==============================
+// ======================
+// 右上「その他」メニュー（順スライド可変・スマホ縦表示対応）
+// ======================
 document.addEventListener('DOMContentLoaded', () => {
   const otherMenuBtn = document.getElementById('otherMenuBtn');
   const otherMenuOptions = document.getElementById('otherMenuOptions');
   let otherMenuOpen = false;
 
-  // ボタンをクリックしたときの表示切替
   otherMenuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     otherMenuOpen = !otherMenuOpen;
-    if (otherMenuOpen) {
+    const links = otherMenuOptions.querySelectorAll('a');
+
+    if(otherMenuOpen){
       otherMenuOptions.classList.add('show');
+      // スマホでも縦スライドになるように transformXを使わず translateYで表示
+      links.forEach((link,i)=>{
+        link.style.animation = 'slideDownFade 0.4s forwards';
+        link.style.animationDelay = `${i*0.1}s`;
+      });
     } else {
       otherMenuOptions.classList.remove('show');
+      links.forEach(link => link.style.animation = '');
     }
   });
 
-  // メニュー外をクリックしたら閉じる
   document.addEventListener('click', (e) => {
-    if (
-      otherMenuOpen &&
-      !otherMenuBtn.contains(e.target) &&
-      !otherMenuOptions.contains(e.target)
-    ) {
+    if(otherMenuOpen && !otherMenuBtn.contains(e.target) && !otherMenuOptions.contains(e.target)){
       otherMenuOptions.classList.remove('show');
       otherMenuOpen = false;
+      otherMenuOptions.querySelectorAll('a').forEach(link => link.style.animation = '');
     }
   });
 });
