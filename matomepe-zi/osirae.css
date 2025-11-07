@@ -43,16 +43,18 @@ h1 {
   margin-top: 40px;
   width: 100%;
   box-sizing: border-box;
+  -webkit-overflow-scrolling: touch; /* iPhone慣性スクロール */
 }
 
 table {
   width: 100%;
-  min-width: 650px; /* ← 修正済み：スマホで切れにくく */
+  min-width: 650px;
   border-collapse: collapse;
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  box-sizing: border-box;
 }
 
 th, td {
@@ -151,7 +153,6 @@ tbody tr:nth-child(even) {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-#menuBtn:hover { transform: none; }
 #menuBtn:active { transform: scale(0.97); box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
 
 .menu-options {
@@ -171,25 +172,11 @@ tbody tr:nth-child(even) {
   pointer-events:none;
   transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease, transform 0.3s ease;
 }
-.menu-options a {
-  padding:12px 16px;
-  text-decoration:none;
-  color:#333;
-  font-weight:500;
-  border-bottom:1px solid #d1e7dd;
-  opacity:0;
-  transform:translateY(-5px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
 .menu-options.show {
   opacity:1;
   max-height:500px;
   transform:translateY(0);
   pointer-events:auto;
-}
-.menu-options.show a {
-  opacity:1;
-  transform:translateY(0);
 }
 
 /* ==========================
@@ -214,7 +201,6 @@ tbody tr:nth-child(even) {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-#otherMenuBtn:hover { transform: none; }
 #otherMenuBtn:active { transform: scale(0.97); box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
 
 .other-menu-options {
@@ -234,119 +220,78 @@ tbody tr:nth-child(even) {
   pointer-events:none;
   transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease, transform 0.3s ease;
 }
-.other-menu-options a {
-  padding:12px 16px;
-  text-decoration:none;
-  color:#333;
-  font-weight:500;
-  border-bottom:1px solid #d1e7dd;
-  opacity:0;
-  transform:translateY(-5px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
 .other-menu-options.show {
   opacity:1;
   max-height:500px;
   transform:translateY(0);
   pointer-events:auto;
 }
-.other-menu-options.show a {
-  opacity:1;
-  transform:translateY(0);
-}
 
 /* ==========================
-   レスポンシブ
+   レスポンシブ対応
    ========================== */
 @media (max-width: 600px) {
   body {
     font-size: 14px;
-    padding: 10px; /* ← 修正：スマホ時の余白を減らす */
+    padding: 10px;
+    overflow-x: hidden;
   }
-  table {
-    font-size: 12px;
-    min-width: 500px; /* ← 修正：スマホで切れない幅 */
-  }
-  th, td {
-    padding: 8px 4px;
-  }
-  .card { font-size: 14px; padding: 12px; }
-  #menuBtn, #otherMenuBtn { font-size: 14px; padding: 8px 16px; }
-}
 
-@media (min-width: 601px) and (max-width: 1024px) {
-  body { font-size: 15px; }
-  table { font-size: 13px; }
-  .card { font-size: 15px; }
-}
-
-@media (max-width: 600px) {
   .timetable-wrapper {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     width: 100%;
     box-sizing: border-box;
   }
 
   table {
     width: 100%;
-    min-width: unset;
+    border-collapse: collapse;
     table-layout: fixed;
-    word-wrap: break-word;
+    font-size: 12px;
+    min-width: unset;
   }
 
   th, td {
     font-size: 11.5px;
-    padding: 6px 4px;
+    padding: 6px 3px;
+    word-break: keep-all;
   }
 
-  /* 各列の幅を再調整して、時刻列を広めに確保 */
+  /* 列幅をスマホ向けに最適化 */
   table th:first-child,
   table td:first-child {
-    width: 12%; /* 時間帯(1時間目など)をやや狭く */
+    width: 10%;
   }
 
   table th:last-child,
   table td:last-child {
-    width: 28%; /* ← 時刻列を広くして見切れ防止！ */
-    word-break: keep-all; /* 改行を防止して読みやすく */
+    width: 28%; /* 時刻列広め */
   }
 
-  /* 他の列は均等に圧縮 */
   table th:not(:first-child):not(:last-child),
   table td:not(:first-child):not(:last-child) {
-    width: 12%;
+    width: auto;
   }
 
-  body {
+  html, body {
+    max-width: 100%;
     overflow-x: hidden;
+  }
+
+  /* Safari独自調整 */
+  @supports (-webkit-touch-callout: none) {
+    th, td {
+      padding: 8px 4px;
+      word-break: keep-all;
+    }
   }
 }
 
 /* ==========================
-   Safari表示補正（右端切れ防止）
+   Safariでの右端切れ防止（全体共通）
    ========================== */
-.timetable-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* iPhoneでの慣性スクロール */
-  width: 100%;
-}
-
-table {
-  max-width: 100%;
-  width: 100%;
-  border-collapse: collapse;
-  box-sizing: border-box;
-}
-
 html, body {
   max-width: 100%;
-  overflow-x: hidden; /* 横スクロール禁止でズレ防止 */
-}
-
-/* Safariでpaddingが反映ズレしにくいよう微調整 */
-@supports (-webkit-touch-callout: none) {
-  th, td {
-    padding: 10px 6px;
-    word-break: keep-all;
-  }
+  overflow-x: hidden;
 }
