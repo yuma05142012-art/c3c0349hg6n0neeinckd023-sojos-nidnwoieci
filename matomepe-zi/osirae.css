@@ -258,7 +258,7 @@ tbody tr:nth-child(even) {
 /* ==========================
    レスポンシブ対応
    ========================== */
-@media (max-width: 600px) {
+@media (max-width: 1023px) {
   body { font-size: 14px; padding: 10px; overflow-x: hidden; }
   table { width: 100%; table-layout: auto; font-size: 12px; min-width: unset; }
   th, td { white-space: normal; word-break: keep-all; font-size: clamp(10px, 2.8vw, 12px); padding: 6px 3px; }
