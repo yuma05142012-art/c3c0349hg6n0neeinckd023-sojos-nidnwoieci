@@ -16,7 +16,7 @@ h1 {
   color: #2f7a45;
   margin-bottom: 20px;
   text-align: center;
-  word-break: keep-all;
+  /* word-break: keep-all; */
 }
 
 /* ==========================
@@ -27,10 +27,12 @@ h1 {
   padding-bottom: 12px;
   -webkit-overflow-scrolling: touch;
 }
+
 .events {
   display: flex;
   gap: 16px;
 }
+
 .card {
   flex: 0 0 240px;
   background: #fff;
@@ -40,22 +42,26 @@ h1 {
   border: 1px solid #d1e7dd;
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .date {
   font-weight: 700;
   font-size: 1.2rem;
   color: #2f7a45;
   margin-bottom: 6px;
 }
+
 .content h3 {
   margin: 0 0 6px 0;
   font-size: 1rem;
 }
+
 .content p {
   margin: 0;
   color: #555;
   font-size: 0.9rem;
   line-height: 1.4;
 }
+
 .tag {
   display: inline-block;
   padding: 4px 8px;
@@ -111,28 +117,93 @@ tbody tr:nth-child(even) {
 }
 
 /* 科目・クラブ別色 */
-.kokugo1 { background: #fef08a; }
-.kokugo2 { background: #fde68a; }
-.sugaku1 { background: #93c5fd; }
-.sugaku2 { background: #60a5fa; }
-.shakaiA { background: #fca5a5; }
-.shakaiB { background: #f87171; }
-.eigoA { background: #a78bfa; }
-.eigoC { background: #c4b5fd; }
-.rika { background: #86efac; }
-.ongaku { background: #f9a8d4; }
-.taiiku { background: #fdba74; }
-.bijutsu { background: #fcd34d; }
-.hr { background: #d1d5db; }
-.reihai { background: #a5f3fc; }
-.hiru { background: #e6f4ea; }
-.seisho { background: #ffb347; }
-.gijutsu { background: #80ced6; }
-.bukatsu { background: #fbbf24; }
-.shr { background: #d9f99d; }
-.tannkyu { background: rgb(235, 149, 208); }
-.hokenn { background: rgb(222, 255, 33); }
-.kateika { background: rgb(255, 211, 154); }
+.kokugo1 {
+  background: #fef08a;
+}
+
+.kokugo2 {
+  background: #fde68a;
+}
+
+.sugaku1 {
+  background: #93c5fd;
+}
+
+.sugaku2 {
+  background: #60a5fa;
+}
+
+.shakaiA {
+  background: #fca5a5;
+}
+
+.shakaiB {
+  background: #f87171;
+}
+
+.eigoA {
+  background: #a78bfa;
+}
+
+.eigoC {
+  background: #c4b5fd;
+}
+
+.rika {
+  background: #86efac;
+}
+
+.ongaku {
+  background: #f9a8d4;
+}
+
+.taiiku {
+  background: #fdba74;
+}
+
+.bijutsu {
+  background: #fcd34d;
+}
+
+.hr {
+  background: #d1d5db;
+}
+
+.reihai {
+  background: #a5f3fc;
+}
+
+.hiru {
+  background: #e6f4ea;
+}
+
+.seisho {
+  background: #ffb347;
+}
+
+.gijutsu {
+  background: #80ced6;
+}
+
+.bukatsu {
+  background: #fbbf24;
+}
+
+.shr {
+  background: #d9f99d;
+}
+
+.tannkyu {
+  background: rgb(235, 149, 208);
+}
+
+.hokenn {
+  background: rgb(222, 255, 33);
+}
+
+.kateika {
+  background: rgb(255, 211, 154);
+}
 
 /* ==========================
    掲示板
@@ -145,17 +216,20 @@ tbody tr:nth-child(even) {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   border: 1px solid #d1e7dd;
 }
+
 .bulletin-board h3 {
   margin-top: 0;
   color: #2f7a45;
   font-size: 1.2rem;
   margin-bottom: 12px;
 }
+
 .bulletin-board ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
+
 .bulletin-board li {
   padding: 10px 12px;
   border-bottom: 1px solid #d1e7dd;
@@ -164,6 +238,7 @@ tbody tr:nth-child(even) {
   display: flex;
   justify-content: space-between;
 }
+
 .bulletin-board li:last-child {
   border-bottom: none;
 }
@@ -177,8 +252,14 @@ tbody tr:nth-child(even) {
   top: 20px;
   z-index: 1000;
 }
-.fixed-menu { left: 20px; }
-.other-menu-container { right: 20px; }
+
+.fixed-menu {
+  left: 20px;
+}
+
+.other-menu-container {
+  right: 20px;
+}
 
 #menuBtn,
 #otherMenuBtn {
@@ -190,14 +271,22 @@ tbody tr:nth-child(even) {
   color: white;
   letter-spacing: 0.05em;
   cursor: pointer;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
 }
-#menuBtn { background: linear-gradient(135deg, #4f46e5, #3b82f6); }
-#otherMenuBtn { background: linear-gradient(135deg, #10b981, #059669); }
-#menuBtn:active, #otherMenuBtn:active {
+
+#menuBtn {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+}
+
+#otherMenuBtn {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+#menuBtn:active,
+#otherMenuBtn:active {
   transform: scale(0.97);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* メニュー本体 */
@@ -216,12 +305,20 @@ tbody tr:nth-child(even) {
   opacity: 0;
   pointer-events: none;
   transform: translateY(-15px) translateX(0);
-  transition: max-height 0.45s cubic-bezier(0.25,0.8,0.25,1),
-              opacity 0.35s ease,
-              transform 0.4s ease;
+  transition: max-height 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+    opacity 0.35s ease,
+    transform 0.4s ease;
 }
-.menu-options { left: 0; }
-.other-menu-options { right: 0; } /* 横スライド防止 */
+
+.menu-options {
+  left: 0;
+}
+
+.other-menu-options {
+  right: 0;
+}
+
+/* 横スライド防止 */
 
 .menu-options.show,
 .other-menu-options.show {
@@ -229,7 +326,7 @@ tbody tr:nth-child(even) {
   max-height: 500px;
   transform: translateY(0) translateX(0);
   pointer-events: auto;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 /* メニューリンク */
@@ -241,30 +338,81 @@ tbody tr:nth-child(even) {
   color: #333;
   font-weight: 500;
   background: #fff;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: translateY(-15px) translateX(0);
 }
 
 /* ホバー */
-.menu-options a:hover { background: #e0f2fe; transform: translateX(4px); }
-.other-menu-options a:hover { background: #dcfce7; transform: translateX(4px); }
+.menu-options a:hover {
+  background: #e0f2fe;
+  transform: translateX(4px);
+}
+
+.other-menu-options a:hover {
+  background: #dcfce7;
+  transform: translateX(4px);
+}
 
 /* アニメーションキー */
 @keyframes slideDownFade {
-  to { opacity: 1; transform: translateY(0) translateX(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
 }
 
 /* ==========================
    レスポンシブ対応
    ========================== */
 @media (max-width: 1023px) {
-  body { font-size: 14px; padding: 10px; overflow-x: hidden; }
-  table { width: 100%; table-layout: auto; font-size: 12px; min-width: unset; }
-  th, td { white-space: normal; word-break: keep-all; font-size: clamp(10px, 2.8vw, 12px); padding: 6px 3px; }
-  table th:first-child, table td:first-child { width: 14%; }
-  table th:last-child, table td:last-child { width: 26%; }
-  html, body { max-width: 100%; overflow-x: hidden; }
-  @supports (-webkit-touch-callout: none) { table { width: 100vw; transform: translateX(0); } }
-  #menuBtn, #otherMenuBtn { padding: 8px 18px; font-size: 1rem; }
+  body {
+    font-size: 14px;
+    padding: 10px;
+    overflow-x: hidden;
+  }
+
+  table {
+    width: 100%;
+    table-layout: auto;
+    font-size: 12px;
+    min-width: unset;
+  }
+
+  th,
+  td {
+    white-space: normal;
+    /* word-break: keep-all; */
+    font-size: clamp(10px, 2.8vw, 12px);
+    padding: 6px 3px;
+  }
+
+  table th:first-child,
+  table td:first-child {
+    width: 14%;
+  }
+
+  table th:last-child,
+  table td:last-child {
+    width: 26%;
+  }
+
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    table {
+      width: 100vw;
+      transform: translateX(0);
+    }
+  }
+
+  #menuBtn,
+  #otherMenuBtn {
+    padding: 8px 18px;
+    font-size: 1rem;
+  }
 }
