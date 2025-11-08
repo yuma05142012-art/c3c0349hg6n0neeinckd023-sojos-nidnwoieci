@@ -373,7 +373,7 @@ tbody tr:nth-child(even) {
   }
 
   table {
-    /* width: 100%; */
+    width: 100%;
     width: calc(100vw - 20px);
     table-layout: auto;
     font-size: 12px;
@@ -404,12 +404,12 @@ tbody tr:nth-child(even) {
     overflow-x: hidden;
   }
 
-  @supports (-webkit-touch-callout: none) {
+  /* @supports (-webkit-touch-callout: none) {
     table {
       width: 100vw;
       transform: translateX(0);
     }
-  }
+  } */
 
   #menuBtn,
   #otherMenuBtn {
