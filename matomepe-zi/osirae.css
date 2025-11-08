@@ -373,7 +373,8 @@ tbody tr:nth-child(even) {
   }
 
   table {
-    width: 100%;
+    /* width: 100%; */
+    width: calc(100vw - 20px);
     table-layout: auto;
     font-size: 12px;
     min-width: unset;
