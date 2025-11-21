@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../matomepe-zi/important.css">
 </head>
 <body>
+
 <!-- 固定メニュー（左上） -->
 <div class="menu-container fixed-menu">
   <button id="menuBtn">メニュー</button>
@@ -38,11 +39,12 @@
     改めて、４月にみんなと約束した、ひとりひとりが安心して過ごせる学校に向かっていくために、みんなの気持ちと力を注いでほしいと強く、切実に願っています。
     保護者のみなさまにも、たくさんのご心配をいただくこととなり、重ねて申し訳なく思っております。お子様を送り出してくださることに感謝をいたしますとともに、改めて、同じことの起きないよう、安心安全な学校生活を守れますよう、力を注いで参ります。よろしくお願い申し上げます。</li>
     </li>
+    <li>そろそろクリスマスの季節なためサイトの背景をクリスマス仕様に変更いたしました。</li>
   </ul>
 </div>
 
 <br>
-<h1>1H・11と12月のお知らせ</h1>
+<h1 class="special-title">1H・11と12月のお知らせ</h1>
 
 <div class="eventsWrapper"><div class="events" id="events"></div></div>
 
@@ -64,5 +66,18 @@
 <div class="bulletin-board" id="bulletin-board"></div>
 
 <script src="../matomepe-zi/osirae.js"></script>
+<script>
+  // 大きい雪を30個降らせる
+  for (let i = 0; i < 10; i++) {
+    const snow = document.createElement("div");
+    snow.className = "snowflake";
+    snow.textContent = "❄";
+    snow.style.left = Math.random() * 100 + "vw";
+    snow.style.animationDuration = 6 + Math.random() * 5 + "s";
+    snow.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(snow);
+  }
+</script>
+
 </body>
 </html>
