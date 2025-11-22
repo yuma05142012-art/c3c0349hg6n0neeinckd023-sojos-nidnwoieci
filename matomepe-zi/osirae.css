@@ -34,7 +34,7 @@ body {
   position: fixed;
   top: -10vh;
   color: #a0e7ff;  /* ← 水色に変更 */
-  font-size: 40px; /* ❄ の大きさ */
+  font-size: 60px; /* ❄ の大きさ */
   opacity: 0.9;
   pointer-events: none;
   animation: bigSnow linear infinite;
