@@ -14,10 +14,16 @@ body {
   color: #333;
   padding: 20px;
   -webkit-text-size-adjust: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
+/* 
+html {
+  background: url("https://i.pinimg.com/736x/0b/46/eb/0b46eb21eafb0ba1c656cc9eb740f563.jpg")
+              center/cover no-repeat fixed;
+  height: 100%;
+} */
 
-body::before {
+/* body::before {
   content: "";
   position: fixed;
   top: 0;
@@ -26,8 +32,8 @@ body::before {
   height: 100%;
   background: url("https://i.pinimg.com/736x/0b/46/eb/0b46eb21eafb0ba1c656cc9eb740f563.jpg")
              center/cover;
-  z-index: -1;   /* 背景として後ろに配置 */
-}
+  z-index: -1;   
+} */
 
 @media (max-width: 768px) {
   body::before {
@@ -36,15 +42,15 @@ body::before {
   }
 }
 
-/* .background-img {
-  width: 100vw;
-  height: 100%;
+.background-img {
+  width: 120vw;
+  height: 120vh;
   position: fixed;
   object-fit: cover;
 
   top: 0;
   z-index: -1;
-} */
+}
 
 
 /* ❄ 大きい雪アニメーション */
