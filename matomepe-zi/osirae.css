@@ -17,7 +17,7 @@ body {
   overflow-x: hidden;
 }
 
-body::before {
+/* body::before {
   content: "";
   position: fixed;
   top: 0;
@@ -27,6 +27,19 @@ body::before {
   background: url("https://i.pinimg.com/736x/0b/46/eb/0b46eb21eafb0ba1c656cc9eb740f563.jpg")
              center/cover;
   z-index: -1;   
+} */
+
+.background-img{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
 }
 
 
