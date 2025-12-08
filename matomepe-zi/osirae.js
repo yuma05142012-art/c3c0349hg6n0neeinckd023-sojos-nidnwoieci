@@ -2,7 +2,6 @@
 
 // お知らせカード
 const EVENTS = [
-  {day:8, title:'期末テスト', desc:'音楽と理科がテスト', tags:['テスト']},
   {day:9, title:'期末テスト', desc:'英語と保険がテスト', tags:['テスト']},
   {day:10, title:'期末テスト', desc:'数学がテストです', tags:['テスト']},
   {day:19, title:'終業式', desc:'二学期終業式', tags:['終業式']},
