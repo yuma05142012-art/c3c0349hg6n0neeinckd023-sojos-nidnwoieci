@@ -2,20 +2,20 @@
    🎄 落ち着いたクリスマスツリーバックグラウンド
    ========================== */
 
-body {
+/* body {
   margin: 0;
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans JP", sans-serif; */
 
   /* 🎄 クリスマスツリー背景（100％表示されるURL） */
   /* background: 
     url("https://i.pinimg.com/736x/0b/46/eb/0b46eb21eafb0ba1c656cc9eb740f563.jpg")
     center/cover no-repeat fixed; */
 
-  color: #333;
+  /* color: #333;
   padding: 20px;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
-}
+} */
 
 /* body::before {
   content: "";
@@ -45,7 +45,7 @@ body {
 
 
 /* ❄ 大きい雪アニメーション */
-@keyframes bigSnow {
+/* @keyframes bigSnow {
   0% {
     transform: translateY(-10vh);
     opacity: 1;
@@ -54,41 +54,46 @@ body {
     transform: translateY(110vh);
     opacity: 0;
   }
-}
+} */
 
-.snowflake {
-  position: fixed;
+/* .snowflake { */
+  /* position: fixed;
   top: -10vh;
-  color: #a0e7ff;  /* ← 水色に変更 */
-  font-size: 60px; /* ❄ の大きさ */
+  color: #a0e7ff;  ← 水色に変更
+  font-size: 60px; ❄ の大きさ
   opacity: 0.9;
   pointer-events: none;
   animation: bigSnow linear infinite;
   z-index: 9999;
-}
+} */
 
 
 
 /* 落下アニメーション */
-@keyframes fall {
+/* @keyframes fall {
   0% {
     transform: translateY(-40px) rotate(0deg);
   }
   100% {
     transform: translateY(110vh) rotate(360deg);
   }
-}
+} */
 
 
 /* アニメーションキー */
-@keyframes fall {
+/* @keyframes fall {
   0% {
     transform: translateY(-10px);
   }
   100% {
     transform: translateY(110vh);
   }
+} */
+
+body {
+  background-color: #e8f5e9; /* とても薄い緑 */
 }
+
 
 
 h1.special-title {
