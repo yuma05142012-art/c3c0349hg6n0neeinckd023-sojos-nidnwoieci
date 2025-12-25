@@ -467,7 +467,6 @@ tbody tr:nth-child(even) {
 @media (max-width: 1023px) {
   body {
     font-size: 14px;
-    padding: 10px;
     overflow-x: hidden;
   }
 
