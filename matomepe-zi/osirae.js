@@ -2,8 +2,6 @@
 
 // お知らせカード
 const EVENTS = [
-  {day:10, title:'高校入試　購買・食堂休業', desc:'', tags:['臨時']},
-  {day:12, title:'家庭学習日', desc:'', tags:['家庭学習日']},
   {day:24, title:'月曜授業', desc:'', tags:['時間割変更']},
   {day:27, title:'最終授業日', desc:'', tags:['時間割変更']},
 ];
