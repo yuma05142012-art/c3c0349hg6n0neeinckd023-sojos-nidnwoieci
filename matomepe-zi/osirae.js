@@ -3,7 +3,7 @@
 // お知らせカード
 const EVENTS = [
   {day:24, title:'月曜授業', desc:'', tags:['時間割変更']},
-  {day:27, title:'最終授業日', desc:'', tags:['時間割変更']},
+  {day:27, title:'最終授業日', desc:'一年生最後の通常授業の日です。', tags:['最後']},
 ];
 
 
