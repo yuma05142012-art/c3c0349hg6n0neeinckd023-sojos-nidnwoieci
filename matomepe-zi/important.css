@@ -39,6 +39,15 @@
   border-bottom: none;
 }
 
+.important-announcement p {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  margin: 0;
+}
+.important-announcement p:last-child {
+  border-bottom: none;
+}
+
 /* フェードインアニメーション */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
