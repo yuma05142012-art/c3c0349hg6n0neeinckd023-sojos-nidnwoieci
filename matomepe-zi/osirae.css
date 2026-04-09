@@ -292,18 +292,21 @@ tbody tr:nth-child(even) {
   background: #d9f99d;
 }
 
-.tannkyu {
-  background: rgb(235, 149, 208);
+.rika2 {
+  background: rgb(129, 207, 69);
 }
 
 .hokenn {
   background: rgb(222, 255, 33);
 }
 
-.kateika {
+.eigoB {
   background: rgb(255, 211, 154);
 }
 
+.gibetu {
+  background: rgb(229, 151, 250);
+}
 /* ==========================
    掲示板
    ========================== */

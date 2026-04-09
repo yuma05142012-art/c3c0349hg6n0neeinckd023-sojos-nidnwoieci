@@ -2,21 +2,25 @@
 
 // お知らせカード
 const EVENTS = [
-  {day:17, title:'3学期終業式', desc:'一年生の終わり', tags:['終わり']},
-  {day:18, title:'3年生卒業式', desc:'3年生のみ', tags:['卒業式']},
-  {day:19, title:'春休み開始', desc:'春休みスタート', tags:['春休み']},
+  {day:10, title:'授業開始', desc:'選挙管理委員会集まり', tags:['初め']},
+  {day:16, title:'HR委員選挙', desc:'', tags:['選挙']},
+  {day:17, title:'遠足', desc:'詳しいことはしおりを見る', tags:['遠足']},
+  {day:20, title:'検尿配布', desc:'', tags:['検尿']},
+  {day:21, title:'検尿一次', desc:'', tags:['検尿']},
+  {day:22, title:'検尿一次', desc:'', tags:['検尿']},
+  {day:23, title:'6限目変更', desc:'6限目：演劇に向けて講演', tags:['講演']},
+  {day:27, title:'水曜授業', desc:'', tags:['時間割変更']},
 ];
-
 
 // 時間割データ
 const TIMETABLE = [
-  ["社会A","国語1","理科","体育","数学1"],
-  ["探求","体育","美術","国語1","音楽"],
-  ["社会B","英語A","数学1","英語C","英語A"],
-  ["音楽","数学2","保健","社会A","国語2"],
-  ["国語2","理科","社会B","英語A","数学2"],
-  ["理科","技術","聖書","HR","家庭"],
-  ["部活","部活","部活","部活","部活"]
+  ["理科2","理科1","数学2","理科2","国語2"],
+  ["保健","国語2","聖書","社会A","英語A"],
+  ["英語A","社会B","英語B","社会B","体育"],
+  ["数学2","社会A","音楽","国語2","技別"],
+  ["国語2","美術","体育","理科1","数学1"],
+  ["英語C","数学1","技術","HR","英語B"],
+  ["部活 ","部活","部活","部活","部活"]
 ];
 
 // 通常時間
@@ -44,13 +48,25 @@ const menuBtn = document.getElementById('menuBtn');
 const menuOptions = document.getElementById('menuOptions');
 
 // ======================
-// お知らせカード生成
+// お知らせカード生成（曜日計算付き）
 // ======================
+const year = 2026;
+const month = 4; // 4月の設定
+
 EVENTS.forEach(ev => {
+  // 曜日を計算するロジック
+  const dateObj = new Date(year, month - 1, ev.day);
+  const dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][dateObj.getDay()];
+  
+  // 土日の場合にクラスをつける（CSSで色を変える用）
+  let dayClass = '';
+  if (dateObj.getDay() === 0) dayClass = 'sun';
+  if (dateObj.getDay() === 6) dayClass = 'sat';
+
   const card = document.createElement('div');
   card.className = 'card';
   card.innerHTML = `
-    <div class="date">${ev.day}日</div>
+    <div class="date ${dayClass}">${ev.day}日(${dayOfWeek})</div>
     <div class="content">
       <h3>${ev.title}</h3>
       <p>${ev.desc}</p>
@@ -67,12 +83,12 @@ EVENTS.forEach(ev => {
 const specialRow = document.createElement('tr');
 specialRow.innerHTML = `
   <td></td>
-  <td class="shr">SHR</td>
-  <td class="shr">SHR</td>
+  <td class="shr"></td>
+  <td class="shr"></td>
   <td class="reihai">礼拝</td>
+  <td class="shr"></td>
   <td class="reihai">礼拝</td>
-  <td class="shr">SHR</td>
-  <td>月火金: ${TIME_LABELS[0]}<br>水木: ${WED_THU_TIME_LABELS[0]}</td>`;
+  <td>月火木: ${TIME_LABELS[0]}<br>水金: ${WED_THU_TIME_LABELS[0]}</td>`;
 tbody.appendChild(specialRow);
 
 // 授業行
@@ -98,7 +114,8 @@ for (let i=0; i<7; i++) {
     else if(subject.includes('社会B')) cls='shakaiB';
     else if(subject.includes('英語A')) cls='eigoA';
     else if(subject.includes('英語C')) cls='eigoC';
-    else if(subject.includes('理科')) cls='rika';
+    else if(subject.includes('理科2')) cls='rika2';
+    else if(subject.includes('理科1')) cls='rika';
     else if(subject.includes('音楽')) cls='ongaku';
     else if(subject.includes('体育')) cls='taiiku';
     else if(subject.includes('美術')) cls='bijutsu';
@@ -106,9 +123,9 @@ for (let i=0; i<7; i++) {
     else if(subject.includes('聖書')) cls='seisho';
     else if(subject.includes('技術')) cls='gijutsu';
     else if(subject.includes('部活')) cls='bukatsu';
-    else if(subject.includes('探求')) cls='tannkyu';
     else if(subject.includes('保健')) cls='hokenn';
-    else if(subject.includes('家庭')) cls='kateika';
+    else if(subject.includes('英語B')) cls='eigoB';
+    else if(subject.includes('技別')) cls='gibetu';
     tr.innerHTML += `<td class="${cls}">${subject}</td>`;
   });
   tr.innerHTML += `<td>${TIME_LABELS[i+1] || ''}<br>水: ${WED_THU_TIME_LABELS[i+1] || ''}</td>`;
@@ -119,7 +136,7 @@ for (let i=0; i<7; i++) {
 // 掲示板
 // ======================
 const BULLETIN_ITEMS = [
-  {title:'3月号', desc:'いつもお支えをありがとうございます。驚くべき速さで3学期を終えようとしております。日々いろいろなことがあり、いろいろなお気持ちがある中で、毎日の学校生活をお支えくださったことに改めてお礼を申し上げます。1年生のしめくくりとともに2年生への準備も進みます。少しずつ、気持ちも2年生へと向かっていけますよう願っております。', tags:['山野先生からの言葉']},
+  {title:'4月号', desc:'', tags:['山野先生からの言葉']},
 ];
 bulletinBoard.innerHTML = `<h3>保護者の方に向けて（学級通信）</h3>
 <ul>
@@ -172,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if(otherMenuOpen){
       otherMenuOptions.classList.add('show');
-      // スマホでも縦スライドになるように transformXを使わず translateYで表示
       links.forEach((link,i)=>{
         link.style.animation = 'slideDownFade 0.4s forwards';
         link.style.animationDelay = `${i*0.1}s`;
