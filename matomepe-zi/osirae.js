@@ -2,7 +2,6 @@
 
 // お知らせカード
 const EVENTS = [
-  {day:10, title:'授業開始', desc:'選挙管理委員会集まり', tags:['初め']},
   {day:16, title:'HR委員選挙', desc:'', tags:['選挙']},
   {day:17, title:'遠足', desc:'詳しいことはしおりを見る', tags:['遠足']},
   {day:20, title:'検尿配布', desc:'', tags:['検尿']},
