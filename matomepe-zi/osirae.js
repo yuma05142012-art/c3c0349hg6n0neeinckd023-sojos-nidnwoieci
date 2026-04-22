@@ -2,9 +2,6 @@
 
 // お知らせカード
 const EVENTS = [
-  {day:20, title:'検尿配布', desc:'', tags:['検尿']},
-  {day:21, title:'検尿一次', desc:'', tags:['検尿']},
-  {day:22, title:'検尿一次', desc:'', tags:['検尿']},
   {day:23, title:'6限目変更', desc:'6限目：演劇に向けて講演', tags:['講演']},
   {day:27, title:'水曜授業', desc:'', tags:['時間割変更']},
 ];
