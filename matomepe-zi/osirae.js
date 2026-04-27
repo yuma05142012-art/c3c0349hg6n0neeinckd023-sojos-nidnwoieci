@@ -2,7 +2,7 @@
 
 // お知らせカード
 const EVENTS = [
-    {day:27, title:'水曜授業', desc:'', tags:['時間割変更']},
+    // {day:27, title:'水曜授業', desc:'', tags:['時間割変更']},
 ];
 
 // 時間割データ
