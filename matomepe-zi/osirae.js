@@ -2,7 +2,15 @@
 
 // お知らせカード
 const EVENTS = [
-    // {day:27, title:'水曜授業', desc:'', tags:['時間割変更']},
+    {day:8,  weekday:'金', title:'一年生クラブガイダンス', desc:'短縮6限', tags:['短縮']},
+    {day:11, weekday:'月', title:'教育実習開始', desc:'30日まで', tags:['教育実習']},
+    {day:13, weekday:'水', title:'全校検診', desc:'授業なし', tags:['検診']},
+    {day:14, weekday:'木', title:'クラス討議', desc:'', tags:['討議']},
+    {day:15, weekday:'金', title:'検尿二次', desc:'', tags:['検尿']},
+    {day:21, weekday:'木', title:'中間確認テスト', desc:'', tags:['テスト']},
+    {day:22, weekday:'金', title:'中間確認テスト・クラス懇談会', desc:'', tags:['テスト・懇談会']},
+    {day:23, weekday:'土', title:'オープンデイ', desc:'', tags:['オープンデイ']},
+
 ];
 
 // 時間割データ
@@ -41,20 +49,18 @@ const menuBtn = document.getElementById('menuBtn');
 const menuOptions = document.getElementById('menuOptions');
 
 // ======================
-// お知らせカード生成（曜日計算付き）
+// お知らせカード生成（手動曜日設定版）
 // ======================
-const year = 2026;
-const month = 4; // 4月の設定
+// ※year, month の変数と new Date による自動計算を削除しました
 
 EVENTS.forEach(ev => {
-  // 曜日を計算するロジック
-  const dateObj = new Date(year, month - 1, ev.day);
-  const dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][dateObj.getDay()];
+  // 配列内の weekday をそのまま使用
+  const dayOfWeek = ev.weekday || '';
   
-  // 土日の場合にクラスをつける（CSSで色を変える用）
+  // 曜日名に応じてクラスをつける（CSS用）
   let dayClass = '';
-  if (dateObj.getDay() === 0) dayClass = 'sun';
-  if (dateObj.getDay() === 6) dayClass = 'sat';
+  if (dayOfWeek === '日') dayClass = 'sun';
+  if (dayOfWeek === '土') dayClass = 'sat';
 
   const card = document.createElement('div');
   card.className = 'card';
