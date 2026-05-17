@@ -2,8 +2,6 @@
 
 // お知らせカード
 const EVENTS = [
-    {day:14, weekday:'木', title:'クラス討議', desc:'', tags:['討議']},
-    {day:15, weekday:'金', title:'検尿二次', desc:'', tags:['検尿']},
     {day:21, weekday:'木', title:'中間確認テスト', desc:'', tags:['テスト']},
     {day:22, weekday:'金', title:'中間確認テスト・クラス懇談会', desc:'', tags:['テスト・懇談会']},
     {day:23, weekday:'土', title:'オープンデイ', desc:'', tags:['オープンデイ']},
