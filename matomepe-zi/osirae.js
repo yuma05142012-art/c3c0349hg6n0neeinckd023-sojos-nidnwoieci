@@ -2,9 +2,11 @@
 
 // お知らせカード
 const EVENTS = [
-    {day:21, weekday:'木', title:'中間確認テスト', desc:'', tags:['テスト']},
-    {day:22, weekday:'金', title:'中間確認テスト・クラス懇談会', desc:'', tags:['テスト・懇談会']},
-    {day:23, weekday:'土', title:'オープンデイ', desc:'', tags:['オープンデイ']},
+  {day:4, weekday:'木', title:'生徒大会', desc:'（短縮5限＋生徒大会）', tags:['生徒大会']},
+  {day:9, weekday:'火', title:'金曜授業', desc:'', tags:['授業変更']},
+  {day:11, weekday:'木', title:'球技大会', desc:'授業なし', tags:['大会']},
+  {day:12, weekday:'金', title:'演劇鑑賞', desc:'授業なし', tags:['演劇']},
+  {day:15, weekday:'月', title:'一年生クラブ開始', desc:'', tags:['クラブ']},
 ];
 
 // 時間割データ
