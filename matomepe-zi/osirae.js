@@ -2,8 +2,6 @@
 
 // お知らせカード
 const EVENTS = [
-  {day:11, weekday:'木', title:'球技大会', desc:'授業なし', tags:['大会']},
-  {day:12, weekday:'金', title:'演劇鑑賞', desc:'授業なし', tags:['演劇']},
   {day:15, weekday:'月', title:'一年生クラブ開始', desc:'', tags:['クラブ']},
 ];
 
