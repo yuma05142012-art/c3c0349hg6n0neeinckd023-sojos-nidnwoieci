@@ -2,7 +2,7 @@
 
 // お知らせカード
 const EVENTS = [
-  {day:15, weekday:'月', title:'一年生クラブ開始', desc:'', tags:['クラブ']},
+  // {day:15, weekday:'月', title:'一年生クラブ開始', desc:'', tags:['クラブ']},
 ];
 
 // 時間割データ
