@@ -127,7 +127,7 @@ for (let i=0; i<7; i++) {
 // 掲示板
 // ======================
 const BULLETIN_ITEMS = [
-  {title:'5月号', desc:'', tags:['山野先生からの言葉']},
+  {title:'8月号', desc:'', tags:['山野先生からの言葉']},
 ];
 bulletinBoard.innerHTML = `<h3>保護者の方に向けて（学級通信）</h3>
 <ul>
