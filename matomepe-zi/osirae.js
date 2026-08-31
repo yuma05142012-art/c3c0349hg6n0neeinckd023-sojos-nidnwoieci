@@ -4,7 +4,7 @@
 const EVENTS = [
   {day:1, weekday:'火', title:'二学期始業式', desc:'', tags:['始業式']},
   {day:2, weekday:'水', title:'授業再開', desc:'40×4+PMクラス時間', tags:['授業再開']},
-  {day:4, weekday:'金', title:'身体測定', desc:'15:00身体測定', tags:['']},
+  {day:4, weekday:'金', title:'身体測定', desc:'15:00身体測定', tags:['身体測定']},
   {day:10, weekday:'木', title:'6時間授業再開', desc:'学園祭が終わるまで、40分×6限+7限目クラス時間', tags:['授業再開']},
   {day:29, weekday:'火', title:'学園祭走準備', desc:'', tags:['学園祭']},
   {day:30, weekday:'水', title:'学園祭本番', desc:'', tags:['学園祭']},
